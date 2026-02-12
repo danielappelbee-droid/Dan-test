@@ -1,0 +1,311 @@
+// Initialize Lucide icons
+lucide.createIcons();
+
+// Initialize avatar icons
+document.querySelectorAll('.avatar-icon[data-icon]').forEach(avatar => {
+  const iconName = avatar.getAttribute('data-icon');
+  const i = document.createElement('i');
+  i.setAttribute('data-lucide', iconName);
+  avatar.appendChild(i);
+});
+
+// Initialize badge icons
+document.querySelectorAll('.badge-todo').forEach(badge => {
+  if (!badge.textContent.trim()) {
+    const i = document.createElement('i');
+    i.setAttribute('data-lucide', 'plus');
+    badge.appendChild(i);
+  }
+});
+
+document.querySelectorAll('.badge-done').forEach(badge => {
+  if (!badge.textContent.trim()) {
+    const i = document.createElement('i');
+    i.setAttribute('data-lucide', 'check');
+    badge.appendChild(i);
+  }
+});
+
+document.querySelectorAll('.badge-pending').forEach(badge => {
+  if (!badge.textContent.trim()) {
+    const i = document.createElement('i');
+    i.setAttribute('data-lucide', 'clock');
+    badge.appendChild(i);
+  }
+});
+
+// Reinitialize icons after adding them
+lucide.createIcons();
+
+// Alert close buttons
+document.querySelectorAll('.alert-close-btn').forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    const alert = button.closest('.alert-banner');
+    alert.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    alert.style.opacity = '0';
+    alert.style.transform = 'translateY(-10px)';
+    setTimeout(() => {
+      alert.style.display = 'none';
+    }, 300);
+  });
+});
+
+// Calculator Input Auto-Scaling Functionality
+function formatInputAmount(value) {
+  if (!value || value === '0') return '0';
+
+  const parts = value.split('.');
+  const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  if (parts.length === 2) {
+    return `${integerPart}.${parts[1]}`;
+  }
+
+  return integerPart;
+}
+
+function removeCommas(value) {
+  return value.replace(/,/g, '');
+}
+
+function calculateFontSize(input) {
+  const container = input.closest('.calculator-input-wrapper');
+  if (!container) return;
+
+  const availableWidth = container.offsetWidth - 100; // Account for currency code
+  const baseFontSize = 52; // 3.25rem
+
+  // Create temporary element to measure text width
+  const temp = document.createElement('span');
+  temp.style.position = 'absolute';
+  temp.style.visibility = 'hidden';
+  temp.style.fontFamily = 'WiseSans, Inter, system-ui, sans-serif';
+  temp.style.fontWeight = '800';
+  temp.style.fontSize = `${baseFontSize}px`;
+  temp.style.whiteSpace = 'nowrap';
+  temp.textContent = input.value || '0';
+  document.body.appendChild(temp);
+
+  let currentFontSize = baseFontSize;
+  let textWidth = temp.offsetWidth;
+
+  // Scale down if text is too wide
+  while (textWidth > availableWidth && currentFontSize > 19.2) {
+    currentFontSize -= 1.6;
+    temp.style.fontSize = `${currentFontSize}px`;
+    textWidth = temp.offsetWidth;
+  }
+
+  document.body.removeChild(temp);
+  input.style.fontSize = `${currentFontSize / 16}rem`;
+}
+
+// Initialize calculator inputs
+document.querySelectorAll('[data-calculator-input]').forEach(input => {
+  // Initial font size calculation
+  calculateFontSize(input);
+
+  // Handle input changes
+  input.addEventListener('input', (e) => {
+    let value = e.target.value;
+
+    // Remove commas and validate
+    value = removeCommas(value);
+
+    // Only allow numbers and one decimal point
+    if (!/^[0-9]*\.?[0-9]*$/.test(value)) {
+      e.target.value = e.target.value.slice(0, -1);
+      return;
+    }
+
+    // Limit to 2 decimal places
+    if (value.includes('.')) {
+      const parts = value.split('.');
+      if (parts[1] && parts[1].length > 2) {
+        return;
+      }
+    }
+
+    // Format with commas
+    const formatted = formatInputAmount(value);
+    e.target.value = formatted;
+
+    // Calculate new font size
+    calculateFontSize(e.target);
+  });
+
+  // Handle focus
+  input.addEventListener('focus', (e) => {
+    if (e.target.value === '0') {
+      e.target.value = '';
+    }
+  });
+
+  // Handle blur
+  input.addEventListener('blur', (e) => {
+    if (e.target.value === '' || e.target.value === '.') {
+      e.target.value = '0';
+    } else {
+      let value = removeCommas(e.target.value);
+
+      // Auto-format single decimal to two decimal places
+      if (value.includes('.')) {
+        const parts = value.split('.');
+        if (parts[1] && parts[1].length === 1) {
+          value = `${value}0`;
+        }
+      }
+
+      e.target.value = formatInputAmount(value);
+    }
+    calculateFontSize(e.target);
+  });
+
+  // Handle paste
+  input.addEventListener('paste', (e) => {
+    e.preventDefault();
+    const pastedText = e.clipboardData.getData('text');
+    const cleanValue = removeCommas(pastedText);
+
+    // Validate pasted content
+    if (!/^[0-9]*\.?[0-9]*$/.test(cleanValue)) {
+      return;
+    }
+
+    // Limit decimal places to 2
+    if (cleanValue.includes('.')) {
+      const parts = cleanValue.split('.');
+      if (parts[1] && parts[1].length > 2) {
+        return;
+      }
+    }
+
+    e.target.value = formatInputAmount(cleanValue);
+    calculateFontSize(e.target);
+  });
+});
+
+// Handle window resize for calculator inputs
+window.addEventListener('resize', () => {
+  document.querySelectorAll('[data-calculator-input]').forEach(input => {
+    calculateFontSize(input);
+  });
+});
+
+// Log button clicks
+document.querySelectorAll('button[class*="btn-"]').forEach(button => {
+  if (!button.classList.contains('btn-disabled') && !button.classList.contains('alert-close-btn')) {
+    button.addEventListener('click', (e) => {
+      console.log('Button clicked:', button.textContent.trim());
+    });
+  }
+});
+
+// Log form inputs
+document.querySelectorAll('input[type="text"]:not([data-calculator-input]), input[type="email"], input[type="password"], input[type="search"], textarea, select').forEach(input => {
+  input.addEventListener('change', (e) => {
+    console.log('Input changed:', e.target.value);
+  });
+});
+
+// Range slider value display
+document.querySelectorAll('input[type="range"]').forEach(slider => {
+  slider.addEventListener('input', (e) => {
+    console.log('Slider value:', e.target.value);
+  });
+});
+
+// Checkbox logging
+document.querySelectorAll('input[type="checkbox"]:not(.switch-checkbox)').forEach(checkbox => {
+  checkbox.addEventListener('change', (e) => {
+    console.log('Checkbox changed:', e.target.checked);
+  });
+});
+
+// Radio button logging
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', (e) => {
+    console.log('Radio selected:', e.target.value);
+  });
+});
+
+// Switch toggle handling
+document.querySelectorAll('.switch-checkbox').forEach(checkbox => {
+  checkbox.addEventListener('change', (e) => {
+    console.log(`Switch ${e.target.id} is now: ${e.target.checked ? 'ON' : 'OFF'}`);
+  });
+});
+
+// Currency Dropdown Functionality
+document.querySelectorAll('[data-currency-dropdown]').forEach(dropdown => {
+  const button = dropdown.querySelector('[data-currency-button]');
+  const menu = dropdown.querySelector('[data-currency-menu]');
+  const options = dropdown.querySelectorAll('[data-currency-option]');
+
+  // Toggle dropdown
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+
+    // Close other dropdowns
+    document.querySelectorAll('[data-currency-dropdown]').forEach(other => {
+      if (other !== dropdown) {
+        other.classList.remove('open');
+      }
+    });
+  });
+
+  // Select currency option
+  options.forEach(option => {
+    option.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const currencyCode = option.getAttribute('data-currency-option');
+      const currencyFlag = option.getAttribute('data-flag');
+
+      // Update button
+      const buttonFlag = button.querySelector('.currency-flag');
+      const buttonCode = button.querySelector('.currency-code-text');
+      buttonFlag.textContent = currencyFlag;
+      buttonCode.textContent = currencyCode;
+
+      // Update selected state
+      options.forEach(opt => opt.classList.remove('selected'));
+      option.classList.add('selected');
+
+      // Close dropdown
+      dropdown.classList.remove('open');
+
+      console.log('Currency changed to:', currencyCode);
+    });
+  });
+});
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', () => {
+  document.querySelectorAll('[data-currency-dropdown]').forEach(dropdown => {
+    dropdown.classList.remove('open');
+  });
+});
+
+// Password Toggle Functionality
+document.querySelectorAll('[data-password-toggle]').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const input = toggle.closest('.relative').querySelector('[data-password-input]');
+    const icon = toggle.querySelector('i');
+
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.setAttribute('data-lucide', 'eye-off');
+    } else {
+      input.type = 'password';
+      icon.setAttribute('data-lucide', 'eye');
+    }
+
+    // Reinitialize lucide icons
+    lucide.createIcons();
+  });
+});
+
+console.log('Wise Design System Demo loaded successfully!');
+console.log('This demo showcases Tailwind CSS overrides and custom components.');

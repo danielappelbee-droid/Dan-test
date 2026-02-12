@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wise Design System Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-wise-background-screen py-16 px-6">
+  <div class="max-w-4xl mx-auto space-y-16">
+
+    <!-- Hero Section -->
+    <div class="text-center py-16">
+      <h1 class="font-wise mb-12" style="font-size: 6rem; line-height: 0.9">
+        Wise Design Demos
+      </h1>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+        <button class="btn-base btn-primary btn-large px-12 py-4 text-xl">
+          Primary Button
+        </button>
+        <button class="btn-base btn-neutral-grey btn-large px-12 py-4 text-xl">
+          Secondary Button
+        </button>
+      </div>
+    </div>
+
+    <!-- Typography Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Typography</h2>
+      <div class="space-y-6">
+        <h1 class="font-wise">Heading 1 - 4xl</h1>
+        <h2 class="font-wise">Heading 2 - 3xl</h2>
+        <h3 class="text-2xl">Heading 3 - 2xl</h3>
+        <h4 class="text-xl">Heading 4 - xl</h4>
+        <h5 class="text-lg">Heading 5 - lg</h5>
+        <h6 class="text-base">Heading 6 - base</h6>
+        <p class="text-sm">Small text - sm</p>
+        <p class="text-xs">Extra small text - xs</p>
+      </div>
+    </section>
+
+    <!-- Text Colors Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Text Colors</h2>
+      <div class="space-y-4">
+        <p class="text-wise-content-primary">Primary content text</p>
+        <p class="text-wise-content-secondary">Secondary content text</p>
+        <p class="text-wise-content-tertiary">Tertiary content text</p>
+        <p class="text-wise-link-content font-semibold underline">Link content text</p>
+        <p class="text-wise-disabled-text">Disabled text</p>
+      </div>
+    </section>
+
+    <!-- Avatars Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Avatars</h2>
+
+      <!-- Initials Avatars -->
+      <div class="mb-12">
+        <h3 class="text-lg font-medium mb-6">Initials Avatars</h3>
+        <div class="flex flex-wrap items-center gap-6">
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar avatar-24 avatar-initials">WW</div>
+            <span class="text-xs text-wise-content-tertiary">24px</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar avatar-40 avatar-initials">WW</div>
+            <span class="text-xs text-wise-content-tertiary">40px</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar avatar-48 avatar-initials">WW</div>
+            <span class="text-xs text-wise-content-tertiary">48px</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar avatar-56 avatar-initials">WW</div>
+            <span class="text-xs text-wise-content-tertiary">56px</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar avatar-72 avatar-initials">WW</div>
+            <span class="text-xs text-wise-content-tertiary">72px</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Icon Avatars -->
+      <div class="mb-12">
+        <h3 class="text-lg font-medium mb-6">Icon Avatars</h3>
+        <div class="flex flex-wrap items-center gap-6">
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar avatar-48 avatar-icon" data-icon="user"></div>
+            <span class="text-xs text-wise-content-tertiary">48px</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar avatar-56 avatar-icon" data-icon="building"></div>
+            <span class="text-xs text-wise-content-tertiary">56px</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar avatar-72 avatar-icon" data-icon="star"></div>
+            <span class="text-xs text-wise-content-tertiary">72px</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avatars with Icon Badges -->
+      <div>
+        <h3 class="text-lg font-medium mb-6">Avatars with Icon Badges</h3>
+        <div class="flex flex-wrap items-center gap-8">
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar-container">
+              <div class="avatar avatar-48 avatar-initials">TD</div>
+              <div class="avatar-badge badge-todo"></div>
+            </div>
+            <span class="text-xs text-wise-content-tertiary">Todo</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar-container">
+              <div class="avatar avatar-56 avatar-initials">DN</div>
+              <div class="avatar-badge badge-done"></div>
+            </div>
+            <span class="text-xs text-wise-content-tertiary">Done</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar-container">
+              <div class="avatar avatar-72 avatar-initials">AT</div>
+              <div class="avatar-badge badge-attention"></div>
+            </div>
+            <span class="text-xs text-wise-content-tertiary">Attention</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="avatar-container">
+              <div class="avatar avatar-56 avatar-icon" data-icon="user"></div>
+              <div class="avatar-badge badge-pending"></div>
+            </div>
+            <span class="text-xs text-wise-content-tertiary">Pending</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Buttons</h2>
+
+      <!-- Primary Buttons -->
+      <div class="mb-12">
+        <h3 class="text-xl font-medium mb-6">Primary Buttons</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <button class="btn-base btn-primary btn-small">Small</button>
+          <button class="btn-base btn-primary btn-medium">Medium</button>
+          <button class="btn-base btn-primary btn-large">Large</button>
+          <button class="btn-base btn-primary btn-large btn-disabled">Disabled</button>
+          <button class="btn-base btn-primary btn-icon-small"><i data-lucide="plus"></i></button>
+          <button class="btn-base btn-primary btn-icon-medium"><i data-lucide="download"></i></button>
+          <button class="btn-base btn-primary btn-icon-large"><i data-lucide="share"></i></button>
+        </div>
+      </div>
+
+      <!-- Neutral Buttons -->
+      <div class="mb-12">
+        <h3 class="text-xl font-medium mb-6">Neutral Buttons</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <button class="btn-base btn-neutral btn-small">Small</button>
+          <button class="btn-base btn-neutral btn-medium">Medium</button>
+          <button class="btn-base btn-neutral btn-large">Large</button>
+          <button class="btn-base btn-neutral btn-large btn-disabled">Disabled</button>
+          <button class="btn-base btn-neutral btn-icon-small"><i data-lucide="edit"></i></button>
+          <button class="btn-base btn-neutral btn-icon-medium"><i data-lucide="settings"></i></button>
+          <button class="btn-base btn-neutral btn-icon-large"><i data-lucide="home"></i></button>
+        </div>
+      </div>
+
+      <!-- Neutral Grey Buttons -->
+      <div class="mb-12">
+        <h3 class="text-xl font-medium mb-6">Neutral Grey Buttons</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <button class="btn-base btn-neutral-grey btn-small">Small</button>
+          <button class="btn-base btn-neutral-grey btn-medium">Medium</button>
+          <button class="btn-base btn-neutral-grey btn-large">Large</button>
+          <button class="btn-base btn-neutral-grey btn-large btn-disabled">Disabled</button>
+          <button class="btn-base btn-neutral-grey btn-icon-small"><i data-lucide="user"></i></button>
+          <button class="btn-base btn-neutral-grey btn-icon-medium"><i data-lucide="calendar"></i></button>
+          <button class="btn-base btn-neutral-grey btn-icon-large"><i data-lucide="map-pin"></i></button>
+        </div>
+      </div>
+
+      <!-- Outline Buttons -->
+      <div class="mb-12">
+        <h3 class="text-xl font-medium mb-6">Outline Buttons</h3>
+        <div class="flex flex-wrap gap-4 items-center">
+          <button class="btn-base btn-outline btn-small">Small</button>
+          <button class="btn-base btn-outline btn-medium">Medium</button>
+          <button class="btn-base btn-outline btn-large">Large</button>
+          <button class="btn-base btn-outline btn-large btn-disabled">Disabled</button>
+          <button class="btn-base btn-outline btn-icon-small"><i data-lucide="heart"></i></button>
+          <button class="btn-base btn-outline btn-icon-medium"><i data-lucide="star"></i></button>
+          <button class="btn-base btn-outline btn-icon-large"><i data-lucide="trash-2"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alert Banners Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Alert Banners</h2>
+      <div class="space-y-4">
+        <!-- Neutral Alert -->
+        <div class="alert-banner alert-neutral">
+          <div class="alert-icon">
+            <span class="alert-icon-text">i</span>
+          </div>
+          <div class="flex-1">
+            <div class="alert-title">Neutral</div>
+            <div class="alert-description">Description</div>
+            <a href="#" class="alert-link">Link</a>
+          </div>
+          <button class="btn-base btn-neutral-grey btn-icon-small alert-close-btn">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <!-- Positive Alert -->
+        <div class="alert-banner alert-positive">
+          <div class="alert-icon">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="flex-1">
+            <div class="alert-title">Positive</div>
+            <div class="alert-description">Description</div>
+            <button class="btn-base btn-small btn-primary mt-3">Action</button>
+          </div>
+        </div>
+
+        <!-- Warning Alert -->
+        <div class="alert-banner alert-warning">
+          <div class="alert-icon">
+            <span class="alert-icon-text">!</span>
+          </div>
+          <div class="flex-1">
+            <div class="alert-title">Warning</div>
+            <div class="alert-description">Description</div>
+            <button class="btn-base btn-small btn-primary mt-3">Action</button>
+          </div>
+        </div>
+
+        <!-- Negative Alert -->
+        <div class="alert-banner alert-negative">
+          <div class="alert-icon">
+            <i data-lucide="x"></i>
+          </div>
+          <div class="flex-1">
+            <div class="alert-title">Negative</div>
+            <div class="alert-description">Description</div>
+            <button class="btn-base btn-small btn-primary mt-3">Action</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alert Messages Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Alert Messages</h2>
+      <div class="space-y-4">
+        <!-- Neutral Message -->
+        <div class="alert-message alert-message-neutral">
+          <div class="alert-message-icon">
+            <span class="alert-message-icon-text">i</span>
+          </div>
+          <div class="alert-message-text">This is a neutral message</div>
+        </div>
+
+        <!-- Positive Message -->
+        <div class="alert-message alert-message-positive">
+          <div class="alert-message-icon">
+            <i data-lucide="check"></i>
+          </div>
+          <div class="alert-message-text">This is a positive message</div>
+        </div>
+
+        <!-- Warning Message -->
+        <div class="alert-message alert-message-warning">
+          <div class="alert-message-icon">
+            <span class="alert-message-icon-text">!</span>
+          </div>
+          <div class="alert-message-text">This is a warning message</div>
+        </div>
+
+        <!-- Negative Message -->
+        <div class="alert-message alert-message-negative">
+          <div class="alert-message-icon">
+            <i data-lucide="x"></i>
+          </div>
+          <div class="alert-message-text">This is a negative message</div>
+        </div>
+
+        <!-- Promotion Message -->
+        <div class="alert-message alert-message-promotion">
+          <div class="alert-message-icon">
+            <i data-lucide="tag"></i>
+          </div>
+          <div class="alert-message-text"><strong>50.00 USD</strong> volume discount</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator Input Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Calculator Input</h2>
+      <div class="space-y-8">
+        <div class="calculator-input-container">
+          <label class="calculator-label">You send</label>
+          <div class="calculator-input-wrapper">
+            <div class="currency-dropdown" data-currency-dropdown>
+              <button class="currency-dropdown-button" data-currency-button>
+                <span class="currency-flag">🇺🇸</span>
+                <span class="currency-code-text">USD</span>
+                <i data-lucide="chevron-down" class="currency-chevron"></i>
+              </button>
+              <div class="currency-dropdown-menu" data-currency-menu>
+                <button class="currency-option" data-currency-option="USD" data-flag="🇺🇸">
+                  <span class="currency-flag">🇺🇸</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">USD</div>
+                    <div class="currency-name">US Dollar</div>
+                  </div>
+                </button>
+                <button class="currency-option" data-currency-option="EUR" data-flag="🇪🇺">
+                  <span class="currency-flag">🇪🇺</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">EUR</div>
+                    <div class="currency-name">Euro</div>
+                  </div>
+                </button>
+                <button class="currency-option" data-currency-option="GBP" data-flag="🇬🇧">
+                  <span class="currency-flag">🇬🇧</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">GBP</div>
+                    <div class="currency-name">British Pound</div>
+                  </div>
+                </button>
+                <button class="currency-option" data-currency-option="JPY" data-flag="🇯🇵">
+                  <span class="currency-flag">🇯🇵</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">JPY</div>
+                    <div class="currency-name">Japanese Yen</div>
+                  </div>
+                </button>
+                <button class="currency-option" data-currency-option="AUD" data-flag="🇦🇺">
+                  <span class="currency-flag">🇦🇺</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">AUD</div>
+                    <div class="currency-name">Australian Dollar</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <input
+              type="text"
+              class="calculator-input"
+              value="1,000"
+              data-calculator-input
+            >
+          </div>
+        </div>
+
+        <div class="calculator-input-container">
+          <label class="calculator-label">Recipient gets</label>
+          <div class="calculator-input-wrapper">
+            <div class="currency-dropdown" data-currency-dropdown>
+              <button class="currency-dropdown-button" data-currency-button>
+                <span class="currency-flag">🇪🇺</span>
+                <span class="currency-code-text">EUR</span>
+                <i data-lucide="chevron-down" class="currency-chevron"></i>
+              </button>
+              <div class="currency-dropdown-menu" data-currency-menu>
+                <button class="currency-option" data-currency-option="USD" data-flag="🇺🇸">
+                  <span class="currency-flag">🇺🇸</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">USD</div>
+                    <div class="currency-name">US Dollar</div>
+                  </div>
+                </button>
+                <button class="currency-option" data-currency-option="EUR" data-flag="🇪🇺">
+                  <span class="currency-flag">🇪🇺</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">EUR</div>
+                    <div class="currency-name">Euro</div>
+                  </div>
+                </button>
+                <button class="currency-option" data-currency-option="GBP" data-flag="🇬🇧">
+                  <span class="currency-flag">🇬🇧</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">GBP</div>
+                    <div class="currency-name">British Pound</div>
+                  </div>
+                </button>
+                <button class="currency-option" data-currency-option="JPY" data-flag="🇯🇵">
+                  <span class="currency-flag">🇯🇵</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">JPY</div>
+                    <div class="currency-name">Japanese Yen</div>
+                  </div>
+                </button>
+                <button class="currency-option" data-currency-option="AUD" data-flag="🇦🇺">
+                  <span class="currency-flag">🇦🇺</span>
+                  <div class="currency-info">
+                    <div class="currency-code-text">AUD</div>
+                    <div class="currency-name">Australian Dollar</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <input
+              type="text"
+              class="calculator-input"
+              value="920.50"
+              data-calculator-input
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Inputs Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Form Inputs</h2>
+      <div class="space-y-6">
+        <!-- Text Input -->
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="Enter your full name">
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="Enter your email">
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="relative">
+            <input type="password" class="form-input pr-14" placeholder="Enter your password" data-password-input>
+            <button type="button" class="password-toggle" data-password-toggle>
+              <i data-lucide="eye" class="h-5 w-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Select Dropdown -->
+        <div class="form-group">
+          <label class="form-label">Country</label>
+          <div class="relative">
+            <select class="form-input appearance-none pr-14">
+              <option value="">Select a country</option>
+              <option value="us">United States</option>
+              <option value="uk">United Kingdom</option>
+              <option value="ca">Canada</option>
+              <option value="au">Australia</option>
+            </select>
+            <div class="select-chevron">
+              <i data-lucide="chevron-down" class="h-5 w-5"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input" rows="4" placeholder="Enter your message"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toggles Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Toggles & Switches</h2>
+      <div class="space-y-6">
+        <!-- Switches -->
+        <div class="mb-8">
+          <h3 class="text-lg font-medium mb-6">Switches</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-wise-content-primary">Email notifications</span>
+              <label class="switch">
+                <input type="checkbox" class="switch-checkbox" checked>
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-wise-content-primary">SMS notifications</span>
+              <label class="switch">
+                <input type="checkbox" class="switch-checkbox">
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-wise-content-primary">Push notifications</span>
+              <label class="switch">
+                <input type="checkbox" class="switch-checkbox" checked>
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-wise-content-primary">Disabled switch</span>
+              <label class="switch">
+                <input type="checkbox" class="switch-checkbox" disabled>
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="mb-8">
+          <h3 class="text-lg font-medium mb-6">Checkboxes</h3>
+          <div class="space-y-3">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" class="checkbox-input w-5 h-5" checked>
+              <span class="text-sm text-wise-content-secondary">I agree to the terms and conditions</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" class="checkbox-input w-5 h-5">
+              <span class="text-sm text-wise-content-secondary">Subscribe to newsletter</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" class="checkbox-input w-5 h-5" checked>
+              <span class="text-sm text-wise-content-secondary">Remember me</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Radio Buttons -->
+        <div>
+          <h3 class="text-lg font-medium mb-6">Radio Buttons</h3>
+          <div class="space-y-3">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="payment" class="radio-input w-5 h-5" checked>
+              <span class="text-sm text-wise-content-secondary">Credit Card</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="payment" class="radio-input w-5 h-5">
+              <span class="text-sm text-wise-content-secondary">Bank Transfer</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="payment" class="radio-input w-5 h-5">
+              <span class="text-sm text-wise-content-secondary">PayPal</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Palette Section -->
+    <section class="py-12 border-b border-wise-border-neutral">
+      <h2 class="font-wise mb-8">Color Palette</h2>
+
+      <!-- Interactive Colors -->
+      <div class="mb-8">
+        <h3 class="text-lg font-medium mb-6">Interactive Colors</h3>
+        <div class="grid grid-cols-3 gap-6">
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-interactive-accent">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-interactive-accent"></div>
+            <span class="text-xs text-wise-interactive-primary">Accent</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-interactive-neutral">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-interactive-neutral"></div>
+            <span class="text-xs text-wise-interactive-primary">Neutral</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-interactive-secondary">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-interactive-secondary"></div>
+            <span class="text-xs text-wise-base-light">Secondary</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand Colors -->
+      <div class="mb-8">
+        <h3 class="text-lg font-medium mb-6">Brand Colors</h3>
+        <div class="grid grid-cols-4 gap-6">
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-green-bright">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-green-bright"></div>
+            <span class="text-xs text-wise-interactive-primary">Bright Green</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-green-forest">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-green-forest"></div>
+            <span class="text-xs text-wise-base-light">Forest Green</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-orange-bright">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-orange-bright"></div>
+            <span class="text-xs">Orange</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-yellow-bright">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-yellow-bright"></div>
+            <span class="text-xs">Yellow</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sentiment Colors -->
+      <div>
+        <h3 class="text-lg font-medium mb-6">Sentiment Colors</h3>
+        <div class="grid grid-cols-3 gap-6">
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-sentiment-positive">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-sentiment-positive"></div>
+            <span class="text-xs text-wise-base-light">Positive</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-sentiment-warning">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-sentiment-warning"></div>
+            <span class="text-xs">Warning</span>
+          </div>
+          <div class="flex flex-col items-center p-4 rounded-lg bg-wise-sentiment-negative">
+            <div class="w-10 h-10 rounded-lg mb-2 bg-wise-sentiment-negative"></div>
+            <span class="text-xs text-wise-base-light">Negative</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Background Examples -->
+    <section class="py-12">
+      <h2 class="font-wise mb-8">Background Examples</h2>
+      <div class="space-y-6">
+        <div class="p-6 bg-wise-background-screen rounded-lg border border-wise-interactive-secondary">
+          <span class="text-sm font-medium">Screen Background</span>
+        </div>
+        <div class="p-6 bg-wise-background-elevated rounded-lg border border-wise-interactive-secondary">
+          <span class="text-sm font-medium">Elevated Background</span>
+        </div>
+        <div class="p-6 bg-wise-background-neutral rounded-lg border border-wise-interactive-secondary">
+          <span class="text-sm font-medium">Neutral Background</span>
+        </div>
+        <div class="p-6 rounded-lg border border-wise-interactive-secondary" style="background-color: var(--wise-disabled-background)">
+          <span class="text-sm font-medium" style="color: var(--wise-disabled-text)">Disabled Background</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
