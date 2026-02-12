@@ -3,7 +3,7 @@
 import { motion, Variants } from "motion/react";
 import { useRouter } from "next/navigation";
 import Button from "./components/Button";
-import { Smartphone, Palette, Layout, ArrowRightLeft, FileText } from "lucide-react";
+import { Smartphone, Palette, Layout, ArrowRightLeft, FileText, UserPlus, MessageCircle } from "lucide-react";
 
 export default function HomePage() {
   const router = useRouter();
@@ -132,11 +132,11 @@ export default function HomePage() {
           transition={{ duration: 0.6 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Briefs card */}
+            {/* Wise Concierge card */}
             <motion.div
               variants={featureVariants}
               className="bg-wise-background-elevated rounded-[40px] p-8 border border-wise-border-neutral cursor-pointer"
-              onClick={() => router.push("/guides/briefs")}
+              onClick={() => router.push("/prototypes/wise-concierge")}
               whileHover={{
                 y: -4,
                 boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
@@ -146,14 +146,14 @@ export default function HomePage() {
             >
               <div className="flex items-start gap-6">
                 <div className="bg-wise-interactive-accent rounded-2xl p-3">
-                  <FileText className="w-6 h-6 text-wise-interactive-primary" />
+                  <MessageCircle className="w-6 h-6 text-wise-interactive-primary" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-2xl font-semibold text-wise-content-primary mb-2">
-                    Design Briefs
+                    Wise Concierge
                   </h3>
                   <p className="text-wise-content-secondary leading-relaxed">
-                    Design briefs and challenges for prototyping workshops
+                    Chat-first onboarding with intelligent product recommendations
                   </p>
                 </div>
               </div>
@@ -185,16 +185,30 @@ export default function HomePage() {
               </div>
             </motion.div>
 
-            {/* Placeholder card */}
+            {/* Onboarding Flow card */}
             <motion.div
               variants={featureVariants}
-              className="bg-wise-background-elevated rounded-[40px] p-8 border-2 border-dashed border-wise-border-neutral flex items-center justify-center min-h-[140px]"
+              className="bg-wise-background-elevated rounded-[40px] p-8 border border-wise-border-neutral cursor-pointer"
+              onClick={() => router.push("/prototypes/onboarding-flow")}
+              whileHover={{
+                y: -4,
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="text-center gap-2 flex flex-col">
-                <p className="text-wise-content-tertiary text-xl font-semibold">
-                  Your prototype here
-                </p>
-                <p className="text-wise-content-secondary">(just ask Claude...)</p>
+              <div className="flex items-start gap-6">
+                <div className="bg-wise-interactive-accent rounded-2xl p-3">
+                  <UserPlus className="w-6 h-6 text-wise-interactive-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-semibold text-wise-content-primary mb-2">
+                    Onboarding Flow
+                  </h3>
+                  <p className="text-wise-content-secondary leading-relaxed">
+                    Conversational account setup with location detection, account type selection, and multi-currency dashboard
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>
