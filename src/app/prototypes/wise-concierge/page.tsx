@@ -68,12 +68,12 @@ export default function WiseConcierge() {
   const hasUserInteracted = useRef(false);
 
   useEffect(() => {
-    // Only scroll after user has interacted (clicked a button or sent a message)
+    // Scroll after user has interacted - always move content up when new messages appear
     if (messages.length > prevMessageCount.current && hasUserInteracted.current) {
-      // Longer delay to ensure content is rendered
+      // Delay to ensure content is rendered, then scroll to bottom
       setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
-      }, 500);
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 100);
     }
     prevMessageCount.current = messages.length;
   }, [messages]);
@@ -409,8 +409,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 pb-[140px]">
-        <div className="max-w-2xl mx-auto space-y-4 min-h-full">
+      <div className="flex-1 overflow-y-auto px-4 py-6 pb-[100px] border-b-8 border-wise-border-neutral">
+        <div className="max-w-2xl mx-auto space-y-4">
           {messages.map((message) => {
             // Assistant Message
             if (message.type === 'assistant') {
@@ -738,7 +738,7 @@ export default function WiseConcierge() {
       </div>
 
       {/* Chat Input */}
-      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen px-4 py-4 pb-safe z-10">
+      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen border-t-2 border-wise-border-neutral px-4 py-4 pb-safe z-10">
         <div className="max-w-2xl mx-auto flex gap-2">
           <input
             type="text"
@@ -775,7 +775,7 @@ export default function WiseConcierge() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
-            className="fixed bottom-[72px] left-0 right-0 bg-wise-background-screen px-4 py-4 z-20"
+            className="fixed bottom-[80px] left-0 right-0 bg-wise-background-screen border-t-2 border-wise-border-neutral px-4 py-4 z-20"
           >
             <div className="max-w-2xl mx-auto">
               <button
