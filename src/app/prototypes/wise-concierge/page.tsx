@@ -408,8 +408,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 pb-24">
-        <div className="max-w-md mx-auto space-y-4 mb-8">
+      <div className="flex-1 overflow-y-auto px-4 py-6 pb-28">
+        <div className="max-w-md mx-auto space-y-4">
           {messages.map((message) => {
             // Assistant Message
             if (message.type === 'assistant') {
@@ -429,7 +429,7 @@ export default function WiseConcierge() {
                       className="object-contain"
                     />
                   </div>
-                  <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 max-w-[75%]">
+                  <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 max-w-[75%] border border-wise-border-neutral">
                     <p className="text-wise-content-primary whitespace-pre-line">{message.content}</p>
                   </div>
                 </motion.div>
@@ -716,7 +716,7 @@ export default function WiseConcierge() {
                   className="object-contain"
                 />
               </div>
-              <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3">
+              <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 border border-wise-border-neutral">
                 <div className="flex gap-1.5">
                   {[0, 0.2, 0.4].map((delay, i) => (
                     <motion.div
@@ -736,7 +736,7 @@ export default function WiseConcierge() {
       </div>
 
       {/* Chat Input */}
-      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-elevated border-t border-wise-border-neutral px-4 py-3 pb-safe z-10">
+      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen px-4 py-3 pb-safe z-10">
         <div className="max-w-md mx-auto flex gap-2">
           <input
             type="text"
