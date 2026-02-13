@@ -1,9 +1,9 @@
+/* Primary: Google Fonts (for most users) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Primary: Google Fonts (for most users) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Fallback: Local Inter fonts (when Google Fonts is blocked) */
 @font-face {
