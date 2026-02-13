@@ -70,9 +70,10 @@ export default function WiseConcierge() {
   useEffect(() => {
     // Only scroll after user has interacted (clicked a button or sent a message)
     if (messages.length > prevMessageCount.current && hasUserInteracted.current) {
+      // Longer delay to ensure content is rendered
       setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-      }, 300);
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      }, 500);
     }
     prevMessageCount.current = messages.length;
   }, [messages]);
@@ -408,8 +409,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 pb-[120px]">
-        <div className="max-w-2xl mx-auto space-y-4">
+      <div className="flex-1 overflow-y-auto px-4 py-6 pb-[140px]">
+        <div className="max-w-2xl mx-auto space-y-4 min-h-full">
           {messages.map((message) => {
             // Assistant Message
             if (message.type === 'assistant') {
@@ -498,6 +499,7 @@ export default function WiseConcierge() {
                   ))}
                   <button
                     onClick={() => {
+                      hasUserInteracted.current = true;
                       addMessage('user', 'Not sure yet');
                       setIsTyping(true);
                       setTimeout(() => {
