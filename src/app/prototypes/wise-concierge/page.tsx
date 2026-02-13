@@ -409,8 +409,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 pt-6 pb-4">
-        <div className="max-w-2xl mx-auto space-y-4" style={{ paddingBottom: showCreateButton ? '140px' : '100px' }}>
+      <div className="flex-1 overflow-y-auto px-4 pt-6" style={{ paddingBottom: showCreateButton ? '120px' : '80px' }}>
+        <div className="max-w-2xl mx-auto space-y-4">
           {messages.map((message) => {
             // Assistant Message
             if (message.type === 'assistant') {
@@ -733,13 +733,13 @@ export default function WiseConcierge() {
             </motion.div>
           )}
 
-          <div ref={messagesEndRef} />
+          <div ref={messagesEndRef} className="h-4" />
         </div>
       </div>
 
       {/* Chat Input - Hidden when Create Account button shows */}
       {!showCreateButton && (
-        <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen border-t border-wise-border-neutral px-4 py-3 z-30">
+        <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen border-t border-wise-border-neutral px-4 py-4 z-30">
           <div className="max-w-2xl mx-auto flex gap-2">
             <input
               type="text"
