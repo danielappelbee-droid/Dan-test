@@ -157,7 +157,9 @@ export default function WiseConcierge() {
 
   const handleTextInput = (text: string) => {
     const lower = text.toLowerCase();
-    if (lower.includes('send') || lower.includes('transfer') || lower.includes('money') || lower.includes('bill')) {
+
+    // Check for Send-related keywords
+    if (lower.includes('send') || lower.includes('transfer') || lower.includes('money') || lower.includes('bill') || lower.includes('pay')) {
       addMessage('user', text);
       setIsTyping(true);
       setTimeout(() => {
@@ -168,13 +170,58 @@ export default function WiseConcierge() {
           setShowCreateButton(true);
         }, 500);
       }, 1200);
-    } else {
+    }
+    // Check for Card-related keywords
+    else if (lower.includes('card') || lower.includes('spend') || lower.includes('shopping') || lower.includes('travel') || lower.includes('atm')) {
       addMessage('user', text);
       setIsTyping(true);
       setTimeout(() => {
         setIsTyping(false);
-        addMessage('assistant', "I'd be happy to help! Could you tell me more about what you'd like to do?");
-      }, 1000);
+        addMessage('assistant', "Great choice! The Wise card gives you real exchange rates when you spend abroad.");
+        setTimeout(() => {
+          addMessage('card', '');
+          setShowCreateButton(true);
+        }, 500);
+      }, 1200);
+    }
+    // Check for Receive-related keywords
+    else if (lower.includes('receive') || lower.includes('get paid') || lower.includes('freelance') || lower.includes('invoice') || lower.includes('account details')) {
+      addMessage('user', text);
+      setIsTyping(true);
+      setTimeout(() => {
+        setIsTyping(false);
+        addMessage('assistant', "Excellent! Get your own local account details to receive money like a local.");
+        setTimeout(() => {
+          addMessage('receive', '');
+          setShowCreateButton(true);
+        }, 500);
+      }, 1200);
+    }
+    // Check for Invest-related keywords
+    else if (lower.includes('invest') || lower.includes('interest') || lower.includes('save') || lower.includes('grow') || lower.includes('balance')) {
+      addMessage('user', text);
+      setIsTyping(true);
+      setTimeout(() => {
+        setIsTyping(false);
+        addMessage('assistant', "Smart move! Grow your money with competitive interest rates on your balance.");
+        setTimeout(() => {
+          addMessage('invest', '');
+          setShowCreateButton(true);
+        }, 500);
+      }, 1200);
+    }
+    // General/unclear intent - recommend Send as most popular
+    else {
+      addMessage('user', text);
+      setIsTyping(true);
+      setTimeout(() => {
+        setIsTyping(false);
+        addMessage('assistant', "Based on what you're describing, I think our Send Money feature would be perfect for you. It lets you transfer money internationally at the real exchange rate with low fees. Want to see how it works?");
+        setTimeout(() => {
+          addMessage('calculator', '');
+          setShowCreateButton(true);
+        }, 500);
+      }, 1200);
     }
   };
 
@@ -347,8 +394,8 @@ export default function WiseConcierge() {
         <Image
           src="/wise.svg"
           alt="Wise"
-          width={60}
-          height={24}
+          width={45}
+          height={18}
           className="object-contain"
         />
 
@@ -366,8 +413,17 @@ export default function WiseConcierge() {
                   key={message.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="flex justify-start"
+                  className="flex justify-start gap-2 items-end"
                 >
+                  <div className="flex-shrink-0 w-6 h-6 bg-wise-interactive-accent rounded-full flex items-center justify-center">
+                    <Image
+                      src="/wise.svg"
+                      alt="Wise"
+                      width={16}
+                      height={8}
+                      className="object-contain"
+                    />
+                  </div>
                   <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 max-w-[85%] border border-wise-border-neutral">
                     <p className="text-wise-content-primary">{message.content}</p>
                   </div>
@@ -441,7 +497,11 @@ export default function WiseConcierge() {
                       setIsTyping(true);
                       setTimeout(() => {
                         setIsTyping(false);
-                        addMessage('assistant', "No problem! Feel free to explore each option. Which would you like to learn about first?");
+                        addMessage('assistant', "No worries! Most people start with our Send Money feature — it's the easiest way to transfer money internationally at the real exchange rate. Want to see how it works?");
+                        setTimeout(() => {
+                          addMessage('calculator', '');
+                          setShowCreateButton(true);
+                        }, 500);
                       }, 1200);
                     }}
                     className="bg-wise-background-elevated text-wise-content-primary border border-wise-border-neutral font-medium px-4 py-2 rounded-full hover:bg-wise-background-neutral transition-colors text-sm"
