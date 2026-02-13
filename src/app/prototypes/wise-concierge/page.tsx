@@ -63,7 +63,14 @@ export default function WiseConcierge() {
     setToAmount(calculated);
   }, [fromAmount, fromCurrency, toCurrency]);
 
-  // Removed auto-scroll to prevent page jumping
+  // Auto-scroll when new messages are added
+  useEffect(() => {
+    if (messages.length > 0) {
+      setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [messages]);
 
   const startChat = () => {
     setAppState('chat');
@@ -391,8 +398,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 pb-40">
-        <div className="max-w-md mx-auto space-y-4">
+      <div className="flex-1 overflow-y-auto px-4 py-6 pb-32">
+        <div className="max-w-md mx-auto space-y-4 mb-4">
           {messages.map((message) => {
             // Assistant Message
             if (message.type === 'assistant') {
@@ -412,8 +419,8 @@ export default function WiseConcierge() {
                       className="object-contain"
                     />
                   </div>
-                  <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 max-w-[85%] border border-wise-border-neutral">
-                    <p className="text-wise-content-primary">{message.content}</p>
+                  <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 max-w-[75%] border border-wise-border-neutral">
+                    <p className="text-wise-content-primary whitespace-pre-line">{message.content}</p>
                   </div>
                 </motion.div>
               );
@@ -710,7 +717,7 @@ export default function WiseConcierge() {
       </div>
 
       {/* Chat Input */}
-      <div className="fixed bottom-20 left-0 right-0 bg-wise-background-elevated border-t border-wise-border-neutral px-4 py-3">
+      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-elevated border-t border-wise-border-neutral px-4 py-3 pb-safe z-10">
         <div className="max-w-md mx-auto flex gap-2">
           <input
             type="text"
@@ -747,7 +754,7 @@ export default function WiseConcierge() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
-            className="fixed bottom-0 left-0 right-0 bg-wise-background-elevated border-t border-wise-border-neutral px-4 py-4"
+            className="fixed bottom-20 left-0 right-0 bg-wise-background-elevated border-t border-wise-border-neutral px-4 py-4 z-20"
           >
             <div className="max-w-md mx-auto">
               <button
