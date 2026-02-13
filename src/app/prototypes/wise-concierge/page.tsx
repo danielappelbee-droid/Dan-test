@@ -65,11 +65,11 @@ export default function WiseConcierge() {
 
   // Auto-scroll when new messages are added (but not on initial load)
   const prevMessageCount = useRef(0);
+  const hasUserInteracted = useRef(false);
 
   useEffect(() => {
-    // Only scroll if messages were actually added AND we have more than 2 messages
-    // This prevents scroll on initial chat start (which adds 2 messages)
-    if (messages.length > prevMessageCount.current && messages.length > 2) {
+    // Only scroll after user has interacted (clicked a button or sent a message)
+    if (messages.length > prevMessageCount.current && hasUserInteracted.current) {
       setTimeout(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
@@ -97,6 +97,7 @@ export default function WiseConcierge() {
   };
 
   const handleCountryConfirm = () => {
+    hasUserInteracted.current = true;
     addMessage('user', 'Yes, that\'s right');
     setSelectedCountry(detectedCountry);
 
@@ -112,10 +113,12 @@ export default function WiseConcierge() {
   };
 
   const handleChangeCountry = () => {
+    hasUserInteracted.current = true;
     setShowCountryPicker(true);
   };
 
   const handleCountrySelect = (country: typeof COUNTRIES[0]) => {
+    hasUserInteracted.current = true;
     setSelectedCountry(country);
     setDetectedCountry(country);
     setShowCountryPicker(false);
@@ -133,6 +136,7 @@ export default function WiseConcierge() {
   };
 
   const handlePillClick = (pill: string) => {
+    hasUserInteracted.current = true;
     addMessage('user', pill);
 
     setIsTyping(true);
@@ -168,6 +172,7 @@ export default function WiseConcierge() {
   };
 
   const handleTextInput = (text: string) => {
+    hasUserInteracted.current = true;
     const lower = text.toLowerCase();
 
     addMessage('user', text);
