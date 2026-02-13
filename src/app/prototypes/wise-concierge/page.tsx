@@ -67,8 +67,9 @@ export default function WiseConcierge() {
   const prevMessageCount = useRef(0);
 
   useEffect(() => {
-    // Only scroll if messages were actually added (not initial render)
-    if (messages.length > prevMessageCount.current && prevMessageCount.current > 0) {
+    // Only scroll if messages were actually added AND we have more than 2 messages
+    // This prevents scroll on initial chat start (which adds 2 messages)
+    if (messages.length > prevMessageCount.current && messages.length > 2) {
       setTimeout(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
