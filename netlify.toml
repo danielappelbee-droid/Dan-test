@@ -6,7 +6,7 @@
   publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "18"
   NEXT_TELEMETRY_DISABLED = "1"
 
 # Force Next.js to use proper routing
