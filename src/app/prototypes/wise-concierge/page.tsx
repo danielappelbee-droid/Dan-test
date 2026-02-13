@@ -72,8 +72,8 @@ export default function WiseConcierge() {
     if (messages.length > prevMessageCount.current && hasUserInteracted.current) {
       // Delay to ensure content is rendered, then scroll to bottom
       setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-      }, 100);
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 200);
     }
     prevMessageCount.current = messages.length;
   }, [messages]);
@@ -409,7 +409,7 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 pb-[100px] border-b-8 border-wise-border-neutral">
+      <div className="flex-1 overflow-y-auto px-4 py-6 pb-24">
         <div className="max-w-2xl mx-auto space-y-4">
           {messages.map((message) => {
             // Assistant Message
@@ -737,36 +737,38 @@ export default function WiseConcierge() {
         </div>
       </div>
 
-      {/* Chat Input */}
-      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen border-t-2 border-wise-border-neutral px-4 py-4 pb-safe z-10">
-        <div className="max-w-2xl mx-auto flex gap-2">
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter' && inputValue.trim()) {
-                handleTextInput(inputValue);
-                setInputValue('');
-              }
-            }}
-            placeholder="Type a message..."
-            className="flex-1 bg-wise-background-screen rounded-full px-5 py-3 outline-none text-wise-content-primary placeholder:text-wise-content-tertiary border border-wise-border-neutral focus:border-wise-interactive-primary transition-colors"
-          />
-          <button
-            onClick={() => {
-              if (inputValue.trim()) {
-                handleTextInput(inputValue);
-                setInputValue('');
-              }
-            }}
-            disabled={!inputValue.trim()}
-            className="bg-wise-interactive-primary text-white rounded-full p-3 disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
-          >
-            <Send className="w-5 h-5" />
-          </button>
+      {/* Chat Input - Hidden when Create Account button shows */}
+      {!showCreateButton && (
+        <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen border-t border-wise-border-neutral px-4 py-3 z-30">
+          <div className="max-w-2xl mx-auto flex gap-2">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' && inputValue.trim()) {
+                  handleTextInput(inputValue);
+                  setInputValue('');
+                }
+              }}
+              placeholder="Type a message..."
+              className="flex-1 bg-wise-background-screen rounded-full px-5 py-3 outline-none text-wise-content-primary placeholder:text-wise-content-tertiary border border-wise-border-neutral focus:border-wise-interactive-primary transition-colors"
+            />
+            <button
+              onClick={() => {
+                if (inputValue.trim()) {
+                  handleTextInput(inputValue);
+                  setInputValue('');
+                }
+              }}
+              disabled={!inputValue.trim()}
+              className="bg-wise-interactive-primary text-white rounded-full p-3 disabled:opacity-40 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95"
+            >
+              <Send className="w-5 h-5" />
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Sticky Footer Button */}
       <AnimatePresence>
@@ -775,7 +777,7 @@ export default function WiseConcierge() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
-            className="fixed bottom-[80px] left-0 right-0 bg-wise-background-screen border-t-2 border-wise-border-neutral px-4 py-4 z-20"
+            className="fixed bottom-0 left-0 right-0 bg-wise-background-screen border-t border-wise-border-neutral px-4 py-4 z-40"
           >
             <div className="max-w-2xl mx-auto">
               <button
