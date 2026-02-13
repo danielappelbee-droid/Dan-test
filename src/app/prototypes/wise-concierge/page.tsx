@@ -69,9 +69,12 @@ export default function WiseConcierge() {
     }, 100);
   };
 
+  // Only scroll when new messages are added, not on initial load
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (messages.length > 0) {
+      scrollToBottom();
+    }
+  }, [messages.length]);
 
   const startChat = () => {
     setAppState('chat');
@@ -352,9 +355,13 @@ export default function WiseConcierge() {
           <ArrowLeft className="h-5 w-5" />
         </Button>
 
-        <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.48 0L8.64 18.24H4.8L0 0H4.32L7.68 14.4L11.04 0H12.48ZM14.88 0H19.2L22.56 14.4L25.92 0H30.24L25.44 18.24H21.6L14.88 0ZM32.64 0H36.96V18.24H32.64V0ZM39.36 9.12C39.36 4.08 42.72 0 48.48 0C54.24 0 57.6 4.08 57.6 9.12C57.6 14.16 54.24 18.24 48.48 18.24C42.72 18.24 39.36 14.16 39.36 9.12ZM53.28 9.12C53.28 6.24 51.36 3.84 48.48 3.84C45.6 3.84 43.68 6.24 43.68 9.12C43.68 12 45.6 14.4 48.48 14.4C51.36 14.4 53.28 12 53.28 9.12Z" fill="#9FE870"/>
-        </svg>
+        <Image
+          src="/wise.svg"
+          alt="Wise"
+          width={60}
+          height={24}
+          className="object-contain"
+        />
 
         <div className="w-12" />
       </div>
