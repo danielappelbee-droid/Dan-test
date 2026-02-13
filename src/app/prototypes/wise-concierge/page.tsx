@@ -71,8 +71,8 @@ export default function WiseConcierge() {
     // Only scroll after user has interacted (clicked a button or sent a message)
     if (messages.length > prevMessageCount.current && hasUserInteracted.current) {
       setTimeout(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 300);
     }
     prevMessageCount.current = messages.length;
   }, [messages]);
@@ -408,8 +408,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 pb-28">
-        <div className="max-w-md mx-auto space-y-4">
+      <div className="flex-1 overflow-y-auto px-4 py-6 pb-[120px]">
+        <div className="max-w-2xl mx-auto space-y-4">
           {messages.map((message) => {
             // Assistant Message
             if (message.type === 'assistant') {
@@ -736,8 +736,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Chat Input */}
-      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen px-4 py-3 pb-safe z-10">
-        <div className="max-w-md mx-auto flex gap-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-screen px-4 py-4 pb-safe z-10">
+        <div className="max-w-2xl mx-auto flex gap-2">
           <input
             type="text"
             value={inputValue}
@@ -773,9 +773,9 @@ export default function WiseConcierge() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
-            className="fixed bottom-20 left-0 right-0 bg-wise-background-elevated px-4 py-4 z-20"
+            className="fixed bottom-[72px] left-0 right-0 bg-wise-background-screen px-4 py-4 z-20"
           >
-            <div className="max-w-md mx-auto">
+            <div className="max-w-2xl mx-auto">
               <button
                 onClick={handleCreateAccount}
                 className="w-full bg-wise-interactive-accent text-wise-interactive-primary font-bold py-4 rounded-full hover:scale-105 transition-transform"
