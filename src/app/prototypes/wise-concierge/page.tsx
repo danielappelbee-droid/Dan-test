@@ -158,68 +158,56 @@ export default function WiseConcierge() {
   const handleTextInput = (text: string) => {
     const lower = text.toLowerCase();
 
+    addMessage('user', text);
+    setIsTyping(true);
+
     // Check for Send-related keywords
-    if (lower.includes('send') || lower.includes('transfer') || lower.includes('money') || lower.includes('bill') || lower.includes('pay')) {
-      addMessage('user', text);
-      setIsTyping(true);
+    if (lower.includes('send') || lower.includes('transfer') || lower.includes('pay someone') || lower.includes('pay my') || lower.includes('abroad')) {
       setTimeout(() => {
         setIsTyping(false);
-        addMessage('assistant', "Perfect! Here's our real-time calculator. Send money at the real exchange rate.");
+        addMessage('assistant', "Got it! Sending money is one of our most popular features. You can transfer internationally at the real exchange rate with low, transparent fees. Would you like to see our calculator to check rates?");
         setTimeout(() => {
-          addMessage('calculator', '');
-          setShowCreateButton(true);
+          addMessage('pills', '');
         }, 500);
       }, 1200);
     }
     // Check for Card-related keywords
-    else if (lower.includes('card') || lower.includes('spend') || lower.includes('shopping') || lower.includes('travel') || lower.includes('atm')) {
-      addMessage('user', text);
-      setIsTyping(true);
+    else if (lower.includes('card') || lower.includes('debit') || lower.includes('spend') || lower.includes('shopping') || lower.includes('travel')) {
       setTimeout(() => {
         setIsTyping(false);
-        addMessage('assistant', "Great choice! The Wise card gives you real exchange rates when you spend abroad.");
+        addMessage('assistant', "The Wise card is perfect for that! You can spend in 40+ currencies at the real exchange rate. It's great for traveling, shopping online, or everyday spending. Want to learn more?");
         setTimeout(() => {
-          addMessage('card', '');
-          setShowCreateButton(true);
+          addMessage('pills', '');
         }, 500);
       }, 1200);
     }
     // Check for Receive-related keywords
-    else if (lower.includes('receive') || lower.includes('get paid') || lower.includes('freelance') || lower.includes('invoice') || lower.includes('account details')) {
-      addMessage('user', text);
-      setIsTyping(true);
+    else if (lower.includes('receive') || lower.includes('paid') || lower.includes('freelance') || lower.includes('client') || lower.includes('invoice') || lower.includes('account detail')) {
       setTimeout(() => {
         setIsTyping(false);
-        addMessage('assistant', "Excellent! Get your own local account details to receive money like a local.");
+        addMessage('assistant', "Perfect! With Wise, you can get local account details in 10+ currencies. This means clients or employers can pay you as if you're local to them — no expensive international fees. Sound good?");
         setTimeout(() => {
-          addMessage('receive', '');
-          setShowCreateButton(true);
+          addMessage('pills', '');
         }, 500);
       }, 1200);
     }
-    // Check for Invest-related keywords
-    else if (lower.includes('invest') || lower.includes('interest') || lower.includes('save') || lower.includes('grow') || lower.includes('balance')) {
-      addMessage('user', text);
-      setIsTyping(true);
+    // Check for Invest/Interest-related keywords
+    else if (lower.includes('invest') || lower.includes('interest') || lower.includes('save') || lower.includes('grow') || lower.includes('earn')) {
       setTimeout(() => {
         setIsTyping(false);
-        addMessage('assistant', "Smart move! Grow your money with competitive interest rates on your balance.");
+        addMessage('assistant', "Smart thinking! Wise Interest lets you earn up to 4.87% on your balance with no lock-in period. Your money is protected up to €100,000 and you can access it anytime. Interested?");
         setTimeout(() => {
-          addMessage('invest', '');
-          setShowCreateButton(true);
+          addMessage('pills', '');
         }, 500);
       }, 1200);
     }
-    // General/unclear intent - recommend Send as most popular
+    // General/unclear intent - ask for clarification
     else {
-      addMessage('user', text);
-      setIsTyping(true);
       setTimeout(() => {
         setIsTyping(false);
-        addMessage('assistant', "Based on what you're describing, I think our Send Money feature would be perfect for you. It lets you transfer money internationally at the real exchange rate with low fees. Want to see how it works?");
+        addMessage('assistant', `I want to make sure I understand what you're looking for. Are you interested in:\n\n• Sending money internationally\n• Getting a card for spending abroad\n• Receiving money from clients or employers\n• Earning interest on your balance\n\nFeel free to tell me more, or tap one of the options below!`);
         setTimeout(() => {
-          addMessage('calculator', '');
-          setShowCreateButton(true);
+          addMessage('pills', '');
         }, 500);
       }, 1200);
     }
@@ -497,11 +485,7 @@ export default function WiseConcierge() {
                       setIsTyping(true);
                       setTimeout(() => {
                         setIsTyping(false);
-                        addMessage('assistant', "No worries! Most people start with our Send Money feature — it's the easiest way to transfer money internationally at the real exchange rate. Want to see how it works?");
-                        setTimeout(() => {
-                          addMessage('calculator', '');
-                          setShowCreateButton(true);
-                        }, 500);
+                        addMessage('assistant', "No problem! Let me know what you're trying to do with your money. For example:\n\n• \"I need to pay a bill abroad\"\n• \"I want a card for traveling\"\n• \"I need to receive payments\"\n• \"I want to earn interest\"\n\nJust type what you need and I'll help you find the right solution!");
                       }, 1200);
                     }}
                     className="bg-wise-background-elevated text-wise-content-primary border border-wise-border-neutral font-medium px-4 py-2 rounded-full hover:bg-wise-background-neutral transition-colors text-sm"
