@@ -63,13 +63,17 @@ export default function WiseConcierge() {
     setToAmount(calculated);
   }, [fromAmount, fromCurrency, toCurrency]);
 
-  // Auto-scroll when new messages are added
+  // Auto-scroll when new messages are added (but not on initial load)
+  const prevMessageCount = useRef(0);
+
   useEffect(() => {
-    if (messages.length > 0) {
+    // Only scroll if messages were actually added (not initial render)
+    if (messages.length > prevMessageCount.current && prevMessageCount.current > 0) {
       setTimeout(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
+    prevMessageCount.current = messages.length;
   }, [messages]);
 
   const startChat = () => {
@@ -372,7 +376,7 @@ export default function WiseConcierge() {
       className="min-h-screen bg-wise-background-screen flex flex-col"
     >
       {/* Header with Back Button and Wise Logo */}
-      <div className="bg-wise-background-elevated border-b border-wise-border-neutral px-4 py-4 flex items-center justify-between">
+      <div className="bg-wise-background-elevated px-4 py-4 flex items-center justify-between">
         <Button
           variant="neutral-grey"
           size="large"
@@ -717,7 +721,7 @@ export default function WiseConcierge() {
       </div>
 
       {/* Chat Input */}
-      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-elevated border-t border-wise-border-neutral px-4 py-3 pb-safe z-10">
+      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-elevated px-4 py-3 pb-safe z-10">
         <div className="max-w-md mx-auto flex gap-2">
           <input
             type="text"
@@ -754,7 +758,7 @@ export default function WiseConcierge() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
-            className="fixed bottom-20 left-0 right-0 bg-wise-background-elevated border-t border-wise-border-neutral px-4 py-4 z-20"
+            className="fixed bottom-20 left-0 right-0 bg-wise-background-elevated px-4 py-4 z-20"
           >
             <div className="max-w-md mx-auto">
               <button
