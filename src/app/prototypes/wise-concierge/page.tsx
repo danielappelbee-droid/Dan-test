@@ -402,8 +402,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 pb-32">
-        <div className="max-w-md mx-auto space-y-4 mb-4">
+      <div className="flex-1 overflow-y-auto px-4 py-6 pb-24">
+        <div className="max-w-md mx-auto space-y-4 mb-8">
           {messages.map((message) => {
             // Assistant Message
             if (message.type === 'assistant') {
@@ -423,7 +423,7 @@ export default function WiseConcierge() {
                       className="object-contain"
                     />
                   </div>
-                  <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 max-w-[75%] border border-wise-border-neutral">
+                  <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 max-w-[75%]">
                     <p className="text-wise-content-primary whitespace-pre-line">{message.content}</p>
                   </div>
                 </motion.div>
@@ -518,7 +518,7 @@ export default function WiseConcierge() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   className="w-full max-w-sm mb-6"
                 >
-                  <div className="bg-wise-background-elevated rounded-2xl p-5 border border-wise-border-neutral">
+                  <div className="bg-wise-background-elevated rounded-2xl p-5">
                     <div className="flex flex-col space-y-4">
                       <SendReceiveInput
                         label="You send"
@@ -588,7 +588,7 @@ export default function WiseConcierge() {
                   </div>
 
                   {/* Card Benefits */}
-                  <div className="bg-wise-background-elevated rounded-2xl p-5 border border-wise-border-neutral">
+                  <div className="bg-wise-background-elevated rounded-2xl p-5">
                     <div className="space-y-3 text-sm">
                       <div className="flex items-start gap-3">
                         <div className="bg-wise-interactive-accent rounded-full p-2 mt-0.5">
@@ -623,7 +623,7 @@ export default function WiseConcierge() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   className="w-full max-w-sm mb-6"
                 >
-                  <div className="bg-wise-background-elevated rounded-2xl p-5 border border-wise-border-neutral">
+                  <div className="bg-wise-background-elevated rounded-2xl p-5">
                     <div className="flex items-center gap-3 mb-4">
                       <Wallet className="w-6 h-6 text-wise-interactive-primary" />
                       <h3 className="font-bold text-lg text-wise-content-primary">Receive Money</h3>
@@ -662,7 +662,7 @@ export default function WiseConcierge() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   className="w-full max-w-sm mb-6"
                 >
-                  <div className="bg-wise-background-elevated rounded-2xl p-5 border border-wise-border-neutral">
+                  <div className="bg-wise-background-elevated rounded-2xl p-5">
                     <div className="flex items-center gap-3 mb-4">
                       <TrendingUp className="w-6 h-6 text-wise-interactive-primary" />
                       <h3 className="font-bold text-lg text-wise-content-primary">Wise Interest</h3>
@@ -699,9 +699,18 @@ export default function WiseConcierge() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex justify-start"
+              className="flex justify-start gap-2 items-end"
             >
-              <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3 border border-wise-border-neutral">
+              <div className="flex-shrink-0 w-6 h-6 bg-wise-interactive-accent rounded-full flex items-center justify-center">
+                <Image
+                  src="/wise.svg"
+                  alt="Wise"
+                  width={16}
+                  height={8}
+                  className="object-contain"
+                />
+              </div>
+              <div className="bg-wise-background-elevated rounded-[20px] rounded-tl-sm px-4 py-3">
                 <div className="flex gap-1.5">
                   {[0, 0.2, 0.4].map((delay, i) => (
                     <motion.div
@@ -721,7 +730,7 @@ export default function WiseConcierge() {
       </div>
 
       {/* Chat Input */}
-      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-elevated px-4 py-3 pb-safe z-10">
+      <div className="fixed bottom-0 left-0 right-0 bg-wise-background-elevated border-t border-wise-border-neutral px-4 py-3 pb-safe z-10">
         <div className="max-w-md mx-auto flex gap-2">
           <input
             type="text"
