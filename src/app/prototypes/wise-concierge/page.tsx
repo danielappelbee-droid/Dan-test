@@ -63,18 +63,7 @@ export default function WiseConcierge() {
     setToAmount(calculated);
   }, [fromAmount, fromCurrency, toCurrency]);
 
-  const scrollToBottom = () => {
-    setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  };
-
-  // Only scroll when new messages are added, not on initial load
-  useEffect(() => {
-    if (messages.length > 0) {
-      scrollToBottom();
-    }
-  }, [messages.length]);
+  // Removed auto-scroll to prevent page jumping
 
   const startChat = () => {
     setAppState('chat');
