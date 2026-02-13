@@ -409,8 +409,8 @@ export default function WiseConcierge() {
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 pb-32">
-        <div className="max-w-2xl mx-auto space-y-4 min-h-full pb-20">
+      <div className="flex-1 overflow-y-auto px-4 pt-6 pb-4">
+        <div className="max-w-2xl mx-auto space-y-4" style={{ paddingBottom: showCreateButton ? '140px' : '100px' }}>
           {messages.map((message) => {
             // Assistant Message
             if (message.type === 'assistant') {
